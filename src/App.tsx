@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+// components
 import Radio from "./components/Radio";
+
+// pages
+import PoklicnaM from "./pages/PoklicnaM";
+import SplosnaM from "./pages/SplosnaM";
 
 enum IMatura {
   SPLOSNA = "splosna",
@@ -9,10 +14,10 @@ enum IMatura {
 }
 
 const App: React.FC = () => {
-  const [matura, setMatura] = useState<IMatura>(IMatura.SPLOSNA);
+  const [matura, setMatura] = useState<IMatura>(IMatura.POKLICNA);
 
   return (
-    <Container>
+    <>
       <Card>
         <Radio
           checked={matura === IMatura.SPLOSNA}
@@ -25,15 +30,16 @@ const App: React.FC = () => {
           label="Poklicna matura"
         />
       </Card>
-    </Container>
+      {matura === IMatura.SPLOSNA && <SplosnaM />}
+      {matura === IMatura.POKLICNA && <PoklicnaM />}
+    </>
   );
 };
-
-const Container = styled.div``;
 
 const Card = styled.div`
   background: var(--rdeca);
   display: flex;
+  padding: 1rem;
 `;
 
 export default App;

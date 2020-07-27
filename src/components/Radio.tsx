@@ -8,13 +8,12 @@ interface RadioProps {
 const Radio = styled.button`
   cursor: pointer;
   font-size: 1rem;
-  margin: 1rem;
+  margin-right: 1rem;
   outline: none;
   background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight:bold;
   color:var(--crna);
 
   &::before {
@@ -24,8 +23,9 @@ const Radio = styled.button`
     width: 1rem;
     min-width: 1rem;
     border-radius: 50%;
-    background: ${(props: RadioProps) => (props.checked ? "var(--crna)" : "var(--rdeca)")};
+    background: ${(props: RadioProps) => (props.checked ? "var(--crna)" : "transparent")};
     border: 3px solid ${(props: RadioProps) => (props.checked ? "  var(--crna)" : "var(--crna)")};
+    opacity: ${(props: RadioProps) => (props.checked ? "1" : "0.2")};
     margin-right: 0.5rem;
   }
 
