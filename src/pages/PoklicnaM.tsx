@@ -8,7 +8,7 @@ import Dropdown from "../components/Dropdown";
 import InputNumber from "../components/InputNumber";
 import { PoklicnaContext } from "../contexts/PoklicnaContext";
 
-import { IMozneTocke } from "../types/PoklicnaTypes";
+import { IMozneTocke } from "../types/TockeTypes";
 
 const PoklicnaM: React.FC = () => {
   const [omejitev, setOmejitev] = useState<number>(0);

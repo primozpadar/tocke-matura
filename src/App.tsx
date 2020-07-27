@@ -7,7 +7,10 @@ import Radio from "./components/Radio";
 // pages
 import PoklicnaM from "./pages/PoklicnaM";
 import SplosnaM from "./pages/SplosnaM";
+
+// context
 import PoklicnaContextProvider from "./contexts/PoklicnaContext";
+import SplosnaContextProvider from "./contexts/SplosnaContext";
 
 enum IMatura {
   SPLOSNA = "splosna",
@@ -15,7 +18,7 @@ enum IMatura {
 }
 
 const App: React.FC = () => {
-  const [matura, setMatura] = useState<IMatura>(IMatura.POKLICNA);
+  const [matura, setMatura] = useState<IMatura>(IMatura.SPLOSNA);
 
   return (
     <>
@@ -31,12 +34,12 @@ const App: React.FC = () => {
           label="Poklicna matura"
         />
       </Card>
-      {matura === IMatura.SPLOSNA && <SplosnaM />}
-      {matura === IMatura.POKLICNA && (
-        <PoklicnaContextProvider>
-          <PoklicnaM />
-        </PoklicnaContextProvider>
-      )}
+      <PoklicnaContextProvider>
+        <SplosnaContextProvider>
+          {matura === IMatura.SPLOSNA && <SplosnaM />}
+          {matura === IMatura.POKLICNA && <PoklicnaM />}
+        </SplosnaContextProvider>
+      </PoklicnaContextProvider>
     </>
   );
 };

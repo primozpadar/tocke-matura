@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { ITocke, IMozneTocke } from "../types/PoklicnaTypes";
+import { ITocke, IMozneTocke } from "../types/TockeTypes";
 
 import { convert23, convert20 } from "../helpers/convertPoklicnaMatura";
 
@@ -19,12 +19,10 @@ const PoklicnaContextProvider: React.FC = ({ children }) => {
   const [totalT, setTotalT] = useState<number>(0);
 
   useEffect(() => {
-    console.log(tocke);
     const { slo, stro, izb1, izb2, letnik3, letnik4 } = tocke;
     const sumMatura = slo + stro + izb1 + izb2;
     const tockeMatura = mozneTocke === 23 ? convert23(sumMatura) * 0.6 : convert20(sumMatura) * 0.6;
     const tockeUspeh = (letnik3 + letnik4) * 4;
-    console.log(tockeUspeh);
 
     setTotalT(tockeMatura + tockeUspeh);
   }, [mozneTocke, tocke]);
