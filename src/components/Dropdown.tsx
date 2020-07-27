@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { PoklicnaContext } from "../contexts/PoklicnaContext";
+
+import { ITockeKeys } from "../types/PoklicnaTypes";
 
 interface Props {
   tocke8?: boolean;
   label: string;
+  keyD: ITockeKeys;
 }
 
-const Dropdown = ({ tocke8, label }: Props) => {
+const Dropdown = ({ tocke8, label, keyD }: Props) => {
+  const { tocke, setTocke } = useContext(PoklicnaContext);
+
+  const changeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const val = Number(e.target.value);
+    setTocke({ ...tocke, [keyD]: val });
+  };
+
   return (
     <Container>
-      <select id={label}>
+      <select id={label} onChange={changeHandler} value={tocke[keyD]}>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
