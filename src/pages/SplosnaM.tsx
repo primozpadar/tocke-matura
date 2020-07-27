@@ -4,11 +4,12 @@ import Grid from "../components/Grid";
 import Card from "../components/Card";
 import Dropdown from "../components/Dropdown";
 import InputNumber from "../components/InputNumber";
+import TockeBar from "../components/TockeBar";
 
 import { SplosnaContext } from "../contexts/SplosnaContext";
 
 const SplosnaM: React.FC = () => {
-  const [omejitev, setOmejitev] = useState<number>(0);
+  const [omejitev, setOmejitev] = useState<number>(100);
 
   const { totalT } = useContext(SplosnaContext);
 
@@ -30,7 +31,7 @@ const SplosnaM: React.FC = () => {
           <InputNumber value={omejitev} onChange={e => setOmejitev(Number(e.target.value))} />
         </Card>
       </Grid>
-      <p style={{ color: "#fff", textAlign: "center" }}>Točke: {totalT}</p>
+      <TockeBar tocke={totalT} omejitev={omejitev} />
     </>
   );
 };

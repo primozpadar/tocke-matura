@@ -9,9 +9,10 @@ import InputNumber from "../components/InputNumber";
 import { PoklicnaContext } from "../contexts/PoklicnaContext";
 
 import { IMozneTocke } from "../types/TockeTypes";
+import TockeBar from "../components/TockeBar";
 
 const PoklicnaM: React.FC = () => {
-  const [omejitev, setOmejitev] = useState<number>(0);
+  const [omejitev, setOmejitev] = useState<number>(100);
   const { tocke, setTocke, mozneTocke, setMozneTocke, totalT } = useContext(PoklicnaContext);
 
   const handleRadio = (val: IMozneTocke) => {
@@ -41,7 +42,7 @@ const PoklicnaM: React.FC = () => {
           <InputNumber value={omejitev} onChange={e => setOmejitev(Number(e.target.value))} />
         </Card>
       </Grid>
-      <p style={{ color: "#fff", textAlign: "center" }}>Točke: {totalT}</p>
+      <TockeBar tocke={totalT} omejitev={omejitev} />
     </>
   );
 };
